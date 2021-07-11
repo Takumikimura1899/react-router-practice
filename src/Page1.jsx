@@ -19,6 +19,7 @@ export const Page1 = () => {
       <h2>To Page1 DetailB</h2>
       <Link to="/page1/detailB">DetailB</Link>
       <br />
+      <hr />
       <button onClick={onClickDetailA}>DetailA</button>
     </div>
   );
