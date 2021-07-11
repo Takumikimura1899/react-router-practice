@@ -3,6 +3,7 @@ import { Home } from "../Home";
 import { Page1 } from "../Page1";
 import { Page1DetailA } from "../Page1DetailA";
 import { Page1DetailB } from "../Page1DetailB";
+import { Page1Routes } from "./Page1Routes";
 import { Page2 } from "../Page2";
 
 export const Router = () => {
@@ -17,17 +18,15 @@ export const Router = () => {
         // プロパティのmatchの中のurlを取り出す。
         render={({ match: { url } }) => (
           <Switch>
-            {/* 試しに出力 */}
-            {console.log(url)}
-            <Route exact path={url}>
-              <Page1 />
-            </Route>
-            <Route path={`${url}/Page1DetailA`}>
-              <Page1DetailA />
-            </Route>
-            <Route path={`${url}/Page1DetailB`}>
-              <Page1DetailB />
-            </Route>
+            {Page1Routes.map((route) => (
+              <Route
+                key={route.path}
+                exact={route.exact}
+                path={`${url}${route.path}`}
+              >
+                {route.children}
+              </Route>
+            ))}
           </Switch>
         )}
       />
